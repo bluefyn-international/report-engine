@@ -36,7 +36,15 @@ class ContainsFilter extends BaseFilter
      */
     public static function label(): string
     {
-        return '⊃ contains';
+        return '⊃';
+    }
+
+    /**
+     * @return string
+     */
+    public static function tooltip(): string
+    {
+        return 'contains';
     }
 
     /**
