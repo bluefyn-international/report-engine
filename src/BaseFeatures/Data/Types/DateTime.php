@@ -135,14 +135,21 @@ class DateTime extends BaseType
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
      */
-    public function renderFilter(string $label, string $name, array $action_types, BaseType $columnType, Collection $value)
-    {
+    public function renderFilter(
+        string $label,
+        string $name,
+        array $action_types,
+        BaseType $columnType,
+        Collection $value,
+        ?string $tooltip = null,
+    ) {
         $value = $value->map(function ($value) {
             return Carbon::parse($value)->isoFormat($this->outputFormat);
         });
 
         return view($this->filterView)->with([
             'label' => $label,
+            'tooltip' => $tooltip,
             'field' => $name,
             'value' => $value,
             'action_types' => $action_types,

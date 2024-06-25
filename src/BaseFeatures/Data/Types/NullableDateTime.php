@@ -27,10 +27,17 @@ class NullableDateTime extends DateTime
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function renderFilter(string $label, string $name, array $action_types, BaseType $columnType, Collection $value)
-    {
+    public function renderFilter(
+        string $label,
+        string $name,
+        array $action_types,
+        BaseType $columnType,
+        Collection $value,
+        ?string $tooltip = null,
+    ) {
         return view($this->filterView)->with([
             'label' => $label,
+            'tooltip' => $tooltip,
             'field' => $name,
             'options' => collect($this->getOptions()),
             'value' => $value,
