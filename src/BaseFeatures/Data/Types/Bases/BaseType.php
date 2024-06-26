@@ -179,35 +179,21 @@ abstract class BaseType
      * @param array       $action_types
      * @param self        $columnType
      * @param Collection  $value
-     * @param ?string     $tooltip
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function renderFilter(
-        string $label,
-        string $name,
-        array $action_types,
-        self $columnType,
-        Collection $value,
-        ?string $tooltip = null,
-    ) {
+    public function renderFilter(string $label, string $name, array $action_types, self $columnType, Collection $value)
+    {
         return view($this->filterView)
             ->with(
-                $this->getConfig($label, $name, $action_types, $columnType, $value, $tooltip)
+                $this->getConfig($label, $name, $action_types, $columnType, $value)
             );
     }
 
-    public function getConfig(
-        string $label,
-        string $name,
-        array $action_types,
-        self $columnType,
-        Collection $value,
-        ?string $tooltip = null,
-    ) : array {
+    public function getConfig(string $label, string $name, array $action_types, self $columnType, Collection $value) : array
+    {
         return [
             'label' => $label,
-            'tooltip' => $tooltip,
             'field' => $name,
             'value' => $value,
             'action_types' => $action_types,

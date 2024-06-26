@@ -567,7 +567,6 @@ class Column implements Arrayable
                 $this->filterInstances(),
                 $this->type(),
                 $this->getFilterValue(),
-                $this->tooltip()
             );
     }
 

@@ -116,17 +116,10 @@ class Enum extends BaseType
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function renderFilter(
-        string $label,
-        string $name,
-        array $action_types,
-        BaseType $columnType,
-        Collection $value,
-        ?string $tooltip = null,
-    ) {
+    public function renderFilter(string $label, string $name, array $action_types, BaseType $columnType, Collection $value)
+    {
         return view($this->filterView)->with([
             'label' => $label,
-            'tooltip' => $tooltip,
             'field' => $name,
             'options' => $this->options,
             'value' => $value,
