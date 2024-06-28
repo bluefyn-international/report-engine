@@ -35,7 +35,15 @@ class DoesNotEqualFilter extends BaseFilter
      */
     public static function label(): string
     {
-        return '≠ does not equal';
+        return '≠';
+    }
+
+    /**
+     * @return string
+     */
+    public static function tooltip(): string
+    {
+        return 'does not equal';
     }
 
     /**

@@ -31,6 +31,14 @@ class IsNotEmptyFilter extends BaseFilter
     /**
      * @return string
      */
+    public static function tooltip(): string
+    {
+        return 'is not empty';
+    }
+
+    /**
+     * @return string
+     */
     public static function key(): string
     {
         return 'is_not_empty';
