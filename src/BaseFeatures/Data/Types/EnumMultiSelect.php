@@ -4,6 +4,7 @@ namespace AlwaysOpen\ReportEngine\BaseFeatures\Data\Types;
 
 use AlwaysOpen\ReportEngine\BaseFeatures\Data\Types\Bases\BaseType;
 use AlwaysOpen\ReportEngine\BaseFeatures\Filters\EqualsFilter;
+use AlwaysOpen\ReportEngine\BaseFeatures\Filters\InFilter;
 use Illuminate\Support\Collection;
 
 class EnumMultiSelect extends Enum
@@ -18,7 +19,7 @@ class EnumMultiSelect extends Enum
     public static function availableFilters(): array
     {
         return [
-            In::class,
+            InFilter::class,
         ];
     }
 
