@@ -177,6 +177,10 @@
                     let element = $(el)
                     let value = element.val()
 
+                    if (Array.isArray(value)) {
+                        value = value.join(',')
+                    }
+
                     if (value) {
                         let filterName = element.attr('id')
 
