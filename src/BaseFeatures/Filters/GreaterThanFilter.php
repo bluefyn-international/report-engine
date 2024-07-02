@@ -50,7 +50,15 @@ class GreaterThanFilter extends BaseFilter
      */
     public static function label(): string
     {
-        return '> greater than';
+        return '>';
+    }
+
+    /**
+     * @return string
+     */
+    public static function tooltip(): string
+    {
+        return 'greater than';
     }
 
     /**

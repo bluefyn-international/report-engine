@@ -50,7 +50,15 @@ class LessThanFilter extends BaseFilter
      */
     public static function label(): string
     {
-        return '< less than';
+        return '<';
+    }
+
+    /**
+     * @return string
+     */
+    public static function tooltip(): string
+    {
+        return 'less than';
     }
 
     /**

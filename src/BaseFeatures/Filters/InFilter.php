@@ -24,7 +24,15 @@ class InFilter extends BaseFilter
      */
     public static function label(): string
     {
-        return '() in';
+        return '()';
+    }
+
+    /**
+     * @return string
+     */
+    public static function tooltip(): string
+    {
+        return 'in';
     }
 
     /**

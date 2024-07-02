@@ -30,6 +30,14 @@ class IsFalseFilter extends BaseFilter
     }
 
     /**
+     * @return string
+     */
+    public static function tooltip(): string
+    {
+        return 'is false';
+    }
+
+    /**
      * Key of filters, used in query string.
      *
      * @return string

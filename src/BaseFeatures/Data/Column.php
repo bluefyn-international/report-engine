@@ -561,7 +561,13 @@ class Column implements Arrayable
     public function renderFilter()
     {
         return $this->type()
-            ->renderFilter($this->label(), $this->name(), $this->filterInstances(), $this->type(), $this->getFilterValue());
+            ->renderFilter(
+                $this->label(),
+                $this->name(),
+                $this->filterInstances(),
+                $this->type(),
+                $this->getFilterValue(),
+            );
     }
 
     public function formatter() : string|null

@@ -5,7 +5,10 @@
     <div class="input-group mb-1">
         <select id="{{ $field }}_actions" class="custom-select" onchange="$('#{{ $field }}_filter_action').val($('#{{ $field }}_actions').find(':selected').attr('filterAction'))">
             @foreach($action_types as $actionType)
-                <option filterAction="{{ $actionType->key() }}" {{ $actionType->key() === $selected_operators[0] ? 'selected' : '' }}>
+                <option filterAction="{{ $actionType->key() }}"
+                        title="{{ $actionType->tooltip() }}"
+                        data-toggle="tooltip"
+                        {{ $actionType->key() === $selected_operators[0] ? 'selected' : '' }}>
                     {{ $actionType->label() }}
                 </option>
             @endforeach

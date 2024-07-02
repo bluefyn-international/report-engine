@@ -50,7 +50,15 @@ class GreaterThanOrEqualFilter extends BaseFilter
      */
     public static function label(): string
     {
-        return '≥ greater than or equal to';
+        return '≥';
+    }
+
+    /**
+     * @return string
+     */
+    public static function tooltip(): string
+    {
+        return 'greater than or equal to';
     }
 
     /**

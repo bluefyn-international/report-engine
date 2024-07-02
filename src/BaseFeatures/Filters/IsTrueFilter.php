@@ -30,6 +30,14 @@ class IsTrueFilter extends BaseFilter
     /**
      * @return string
      */
+    public static function tooltip(): string
+    {
+        return 'is true';
+    }
+
+    /**
+     * @return string
+     */
     public static function key(): string
     {
         return 'is_true';

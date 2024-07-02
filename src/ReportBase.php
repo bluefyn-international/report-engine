@@ -470,12 +470,16 @@ abstract class ReportBase implements Responsable, Arrayable
                 'columns' => $columns,
                 'offset' => ($columnsWide - 1) - count($columns),
                 'includeSubmit' => ! $fullFilterRows && count($columns) < $columnsWide,
+                'columnsWide' => $columnsWide,
             ])->render();
         });
 
         if (! empty($output) && $fullFilterRows) {
             $output .= view('report-engine::partials.filters-row')
-                ->with(['offset' => $columnsWide - 1])
+                ->with([
+                    'offset' => $columnsWide - 1,
+                    'columnsWide' => $columnsWide
+                ])
                 ->render();
         }
 

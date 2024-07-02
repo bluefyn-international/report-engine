@@ -51,6 +51,13 @@ abstract class BaseFilter implements Arrayable
     abstract public static function label(): string;
 
     /**
+     * Tooltip of filters being passed into report displayed to users.
+     *
+     * @return string
+     */
+    abstract public static function tooltip(): string;
+
+    /**
      * Key of filters, used in query string.
      *
      * @return string
@@ -144,6 +151,7 @@ abstract class BaseFilter implements Arrayable
             'field' => $this->getField(),
             'label' => $this->label(),
             'key' => $this->key(),
+            'tooltip' => $this->tooltip(),
         ];
     }
 

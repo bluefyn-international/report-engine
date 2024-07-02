@@ -32,7 +32,15 @@ class EqualsFilter extends BaseFilter
      */
     public static function label(): string
     {
-        return '= equals';
+        return '=';
+    }
+
+    /**
+     * @return string
+     */
+    public static function tooltip(): string
+    {
+        return 'equals';
     }
 
     /**
