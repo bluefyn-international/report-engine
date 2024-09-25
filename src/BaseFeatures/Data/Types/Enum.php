@@ -14,6 +14,8 @@ class Enum extends BaseType
     protected $use_keys = false;
     protected string $filterView = 'report-engine::partials.enum-filter';
 
+    protected string $inputType = 'select';
+
     /**
      * Enum constructor.
      *
@@ -129,6 +131,6 @@ class Enum extends BaseType
 
     public function inputType() : string
     {
-        return 'select';
+        return $this->inputType;
     }
 }

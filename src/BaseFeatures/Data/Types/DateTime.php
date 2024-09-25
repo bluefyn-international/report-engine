@@ -27,6 +27,8 @@ class DateTime extends BaseType
 
     protected string $filterView = 'report-engine::partials.date-filter';
 
+    protected string $inputType = 'date';
+
     public function __construct(
         string|null $outputFormat = null,
         string|null $placeholder = null,
@@ -95,7 +97,7 @@ class DateTime extends BaseType
 
     public function inputType() : string
     {
-        return 'date';
+        return $this->inputType;
     }
 
     /**

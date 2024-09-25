@@ -11,6 +11,8 @@ class NullableDateTime extends DateTime
 {
     protected string $filterView = 'report-engine::partials.empty-not-empty-filter';
 
+    protected string $inputType = 'select';
+
     public function __construct(?string $date_time_format = null, ?string $placeholder = null, ?string $output_tz_name = null)
     {
         parent::__construct($date_time_format, $placeholder, $output_tz_name);
@@ -48,7 +50,7 @@ class NullableDateTime extends DateTime
 
     public function inputType() : string
     {
-        return 'select';
+        return $this->inputType;
     }
 
     public function getOptions() : array
