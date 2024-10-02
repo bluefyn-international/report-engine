@@ -19,6 +19,18 @@ class DoesNotEqualFilter extends BaseFilter
         $action = $this->getAction();
 
         if ($this->valueIsDate()) {
+            /**
+             * @var Carbon $value
+             */
+            $value = parent::getValue();
+
+            $timeZoneString = $this->getColumn()->type()->getOutputTimezone()
+                ?? Arr::get($options, 'timezone');
+
+            if ($timeZoneString) {
+                $value->shiftTimezone($timeZoneString);
+            }
+
             return $builder->where(function (Builder $builder) {
                 $builder->where((string) $this->getField(), '>', $this->getValue()->endOfDay()->toDateTimeString())
                     ->orWhere((string) $this->getField(), '<', $this->getValue()->startOfDay()->toDateTimeString());

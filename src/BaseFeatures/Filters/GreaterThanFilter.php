@@ -2,6 +2,7 @@
 
 namespace AlwaysOpen\ReportEngine\BaseFeatures\Filters;
 
+use AlwaysOpen\ReportEngine\BaseFeatures\Data\Types\DateTime;
 use Carbon\Carbon;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Arr;
@@ -32,14 +33,19 @@ class GreaterThanFilter extends BaseFilter
              * @var Carbon $value
              */
             $value = parent::getValue();
-            $timeZoneString = $this->getColumn()->type()->getOutputTimezone()
+            $type = $this->getColumn()->type();
+            $timeZoneString = $type->getOutputTimezone()
                 ?? Arr::get($options, 'timezone');
 
             if ($timeZoneString) {
                 $value->shiftTimezone($timeZoneString);
             }
 
-            return $value->endOfDay()->utc()->toDateTimeString();
+            if (DateTime::DATE_INPUT_TYPE === $type->inputType()) {
+                return $value->endOfDay()->utc()->toDateTimeString();
+            }
+
+            return $value->utc()->toDateTimeString();
         }
 
         return parent::getValue();
