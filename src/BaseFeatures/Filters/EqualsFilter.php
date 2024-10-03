@@ -2,6 +2,7 @@
 
 namespace AlwaysOpen\ReportEngine\BaseFeatures\Filters;
 
+use Carbon\Carbon;
 use Illuminate\Database\Query\Builder;
 
 class EqualsFilter extends BaseFilter
@@ -15,8 +16,12 @@ class EqualsFilter extends BaseFilter
     public function apply(Builder $builder, array $options = []) : Builder
     {
         if ($this->valueIsDate()) {
-            $greaterThanEqual = new GreaterThanOrEqualFilter($this->getColumn(), $this->getValue());
-            $lessThanEqual = new LessThanOrEqualFilter($this->getColumn(), $this->getValue());
+            /**
+             * @var Carbon $value
+             */
+            $value = $this->getValue();
+            $greaterThanEqual = new GreaterThanOrEqualFilter($this->getColumn(), $value->clone()->startOfDay());
+            $lessThanEqual = new LessThanOrEqualFilter($this->getColumn(), $value->clone()->endOfDay());
             $builder = $greaterThanEqual->apply($builder, $options);
 
             return $lessThanEqual->apply($builder, $options);

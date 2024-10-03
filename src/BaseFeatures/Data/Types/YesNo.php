@@ -11,6 +11,8 @@ class YesNo extends BaseType
 {
     protected string $filterView = 'report-engine::partials.yes-no-filter';
 
+    protected string $inputType = 'select';
+
     /**
      * @param mixed       $value
      * @param object|null $result
@@ -57,7 +59,7 @@ class YesNo extends BaseType
 
     public function inputType() : string
     {
-        return 'select';
+        return $this->inputType;
     }
 
     public function getOptions() : array

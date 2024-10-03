@@ -7,7 +7,7 @@
                 <option filterAction="{{ $actionType->key() }}"
                         title="{{ $actionType->tooltip() }}"
                         data-toggle="tooltip"
-                        {{ $actionType->key() === $selected_operators[0] ? 'select' : '' }}>
+                        {{ $actionType->key() === $selected_operators[0] ? 'selected' : '' }}>
                     {{ $actionType->label() }}
                 </option>
             @endforeach

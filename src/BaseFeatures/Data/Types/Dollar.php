@@ -20,6 +20,8 @@ class Dollar extends BaseType
      */
     protected $options = null;
 
+    protected string $inputType = 'number';
+
     /**
      * Dollar constructor.
      *
@@ -87,6 +89,6 @@ class Dollar extends BaseType
 
     public function inputType() : string
     {
-        return 'number';
+        return $this->inputType;
     }
 }

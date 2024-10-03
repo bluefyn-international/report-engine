@@ -24,6 +24,8 @@ abstract class BaseType
 
     protected string $filterView = 'report-engine::partials.base-filter';
 
+    protected string $inputType = 'text';
+
     /**
      * @param mixed       $value
      * @param object|null $result
@@ -148,7 +150,13 @@ abstract class BaseType
 
     public function inputType() : string
     {
-        return 'text';
+        return $this->inputType;
+    }
+
+    public function setInputType(string $inputType) : self
+    {
+        $this->inputType = $inputType;
+        return $this;
     }
 
     public function clearClasses() : self

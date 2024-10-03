@@ -21,6 +21,8 @@ abstract class Number extends BaseType
      */
     protected string $separator = ',';
 
+    protected string $inputType = 'number';
+
     /**
      * @param string $separator
      *
@@ -90,6 +92,6 @@ abstract class Number extends BaseType
      */
     public function inputType() : string
     {
-        return 'number';
+        return $this->inputType;
     }
 }

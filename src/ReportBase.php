@@ -244,7 +244,7 @@ abstract class ReportBase implements Responsable, Arrayable
                 return $column->isFilterable();
             })
             ->map(function (Column $column) use ($filteredBy) {
-                $column->setFilterValue($filteredBy->get($column->aliasOrName()));
+                $column->setFilterValue($filteredBy->get($column->name()));
 
                 return $column;
             });

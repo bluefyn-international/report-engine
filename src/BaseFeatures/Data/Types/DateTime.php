@@ -27,6 +27,12 @@ class DateTime extends BaseType
 
     protected string $filterView = 'report-engine::partials.date-filter';
 
+    protected string $inputType = self::DATE_INPUT_TYPE;
+
+    public const DATE_INPUT_TYPE = 'date';
+    public const DATETIME_LOCAL_INPUT_TYPE = 'datetime-local';
+
+
     public function __construct(
         string|null $outputFormat = null,
         string|null $placeholder = null,
@@ -95,7 +101,7 @@ class DateTime extends BaseType
 
     public function inputType() : string
     {
-        return 'date';
+        return $this->inputType;
     }
 
     /**
