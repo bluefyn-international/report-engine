@@ -29,6 +29,10 @@ class DateTime extends BaseType
 
     protected string $inputType = self::DATE_INPUT_TYPE;
 
+    protected string|null $isoDateInputFormat = 'YYYY-MM-DD';
+
+    protected string|null $isoDateTimeInputFormat = 'YYYY-MM-DDTHH:mm:ss.ss';
+
     public const DATE_INPUT_TYPE = 'date';
     public const DATETIME_LOCAL_INPUT_TYPE = 'datetime-local';
 
@@ -104,6 +108,16 @@ class DateTime extends BaseType
         return $this->inputType;
     }
 
+    public function isDateInputType() : string
+    {
+        return self::DATE_INPUT_TYPE === $this->inputType();
+    }
+
+    public function isDatetimeLocalInputType() : string
+    {
+        return self::DATETIME_LOCAL_INPUT_TYPE === $this->inputType();
+    }
+
     /**
      * @param mixed       $value
      * @param object|null $result
@@ -143,8 +157,12 @@ class DateTime extends BaseType
      */
     public function renderFilter(string $label, string $name, array $action_types, BaseType $columnType, Collection $value)
     {
-        $value = $value->map(function ($value) {
-            return Carbon::parse($value)->isoFormat($this->outputFormat);
+        $isDateInputType = $this->isDateInputType();
+        $value = $value->map(function ($value) use ($isDateInputType) {
+            return Carbon::parse($value)->isoFormat(
+                $isDateInputType ? $this->isoDateInputFormat : $this->isoDateTimeInputFormat,
+                $this->outputFormat
+            );
         });
 
         return view($this->filterView)->with([
