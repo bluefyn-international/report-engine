@@ -194,6 +194,13 @@
                     }
                 })
 
+                if (0 === filterParams.size && ! {!! json_encode
+                ($allowEmptyFilterSubmission) !!}) {
+                    alert('Please select at least one filter and try ' +
+                        'resubmitting')
+                    return
+                }
+
                 let viewReportUrl = endpoint.replace('.json', '') + '?' + filterParams.toString()
                 let dataReportUrl = endpoint + '?' + filterParams.toString()
 
