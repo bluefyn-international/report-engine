@@ -73,6 +73,8 @@ abstract class ReportBase implements Responsable, Arrayable
 
     protected bool $autoloadInitialData = false;
 
+    protected bool $allowEmptyFilterSubmission = true;
+
     /**
      * Whether the rows should be selectable
      */
@@ -353,6 +355,7 @@ abstract class ReportBase implements Responsable, Arrayable
             'tooltips' => $this->tooltips,
             'layoutColumnsOnNewData' => $this->layoutColumnsOnNewData,
             'layout' => $this->layout,
+            'allowEmptyFilterSubmission' => $this->allowEmptyFilterSubmission,
         ];
     }
 
