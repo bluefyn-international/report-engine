@@ -1,5 +1,6 @@
 <div class="col-md-3 mb-3">
     <input type="hidden" id="{{ $field }}_filter_action" value="{{ $action_types[0]->key() }}"/>
+    <input type="hidden" id="{{ $field }}_filter_required" value="{{ $filter_required }}"/>
     <label class="my-1 mr-2" for="{{ $field }}_filter">{{ $label }}</label>
     <div class="input-group mb-1">
         <select id="{{ $field }}_actions" class="custom-select" onchange="$('#{{ $field }}_filter_action').val($('#{{ $field }}_actions').find(':selected').attr('filterAction'))">
