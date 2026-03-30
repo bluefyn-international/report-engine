@@ -5,12 +5,15 @@
     <div class="input-group mb-1">
         <select multiple id="{{ $field }}_filter" class="custom-select report-filter-input">
             <option></option>
+            @php
+                $splitValues = explode(',', $value->first());
+            @endphp
             @foreach($options as $optionKey => $optionValue)
                 <option
                 @if (false === ($useKey ?? false))
-                    {{ $optionValue == $value->first() ? 'selected' : '' }}
+                    {{ in_array($optionValue, $splitValues) ? 'selected' : '' }}
                 @else
-                    {{ $optionKey == $value->first() ? 'selected' : '' }}
+                    {{ in_array($optionKey, $splitValues) ? 'selected' : '' }}
                     value="{{$optionKey}}"
                 @endif
                 >{!! $optionValue !!}</option>
