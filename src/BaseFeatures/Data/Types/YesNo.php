@@ -46,7 +46,7 @@ class YesNo extends BaseType
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function renderFilter(string $label, string $name, array $action_types, BaseType $columnType, Collection $value)
+    public function renderFilter(string $label, string $name, array $action_types, BaseType $columnType, Collection $value, bool $filterRequired)
     {
         return view($this->filterView)->with([
             'label' => $label,
@@ -54,6 +54,7 @@ class YesNo extends BaseType
             'options' => collect($this->getOptions()),
             'value' => $value,
             'useKey' => true,
+            'filter_required' => $filterRequired,
         ]);
     }
 

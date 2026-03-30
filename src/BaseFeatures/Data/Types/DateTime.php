@@ -155,7 +155,7 @@ class DateTime extends BaseType
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
      */
-    public function renderFilter(string $label, string $name, array $action_types, BaseType $columnType, Collection $value)
+    public function renderFilter(string $label, string $name, array $action_types, BaseType $columnType, Collection $value, bool $filterRequired)
     {
         $isDateInputType = $this->isDateInputType();
         $value = $value->map(function ($value) use ($isDateInputType) {
@@ -174,6 +174,7 @@ class DateTime extends BaseType
             'classes' => $this->styleClass(),
             'placeholder' => $this->placeholder(),
             'selected_operators' => $this->getSelectedOperators($value),
+            'filter_required' => $filterRequired,
         ]);
     }
 }

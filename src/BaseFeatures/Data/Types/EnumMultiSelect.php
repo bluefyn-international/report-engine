@@ -32,7 +32,7 @@ class EnumMultiSelect extends Enum
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function renderFilter(string $label, string $name, array $action_types, BaseType $columnType, Collection $value)
+    public function renderFilter(string $label, string $name, array $action_types, BaseType $columnType, Collection $value, bool $filterRequired)
     {
         return view($this->filterView)->with([
             'label' => $label,
@@ -40,6 +40,7 @@ class EnumMultiSelect extends Enum
             'options' => $this->options,
             'value' => $value,
             'useKey' => $this->use_keys,
+            'filter_required' => $filterRequired,
         ]);
     }
 
