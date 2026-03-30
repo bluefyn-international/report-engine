@@ -176,20 +176,24 @@
                 $('.report-filter-input').each(function (i, el) {
                     let element = $(el)
                     let value = element.val()
+                    let requiredFiltersMissing = []
 
                     if (Array.isArray(value)) {
                         value = value.join(',')
                     }
 
+                    let filterName = element.attr('id')
+                    filterName = filterName.substring(0, filterName.indexOf('_filter'))
+
+                    let filterRequired = $('#' + element.attr('id') + '_required').val()
+
                     if (value) {
-                        let filterName = element.attr('id')
-
-                        filterName = filterName.substring(0, filterName.indexOf('_filter'))
-
                         if (possibleFilters.includes(filterName)) {
                             let action = $('#' + element.attr('id') + '_action').val()
 
                             filterParams.append('filters['+filterName+']['+action+']', value)
+                        } else if (!value && filterRequired) {
+                            requiredFiltersMissing.push(el.labels[0].innerText)
                         }
                     }
                 })
@@ -198,6 +202,12 @@
                 ($allowEmptyFilterSubmission) !!}) {
                     alert('Please select at least one filter and try ' +
                         'resubmitting')
+                    return
+                }
+
+                if (0 !== requiredFiltersMissing.length) {
+                    alert('The following filters are required and must have a value set: '
+                        + requiredFiltersMissing.join(', '))
                     return
                 }
 
