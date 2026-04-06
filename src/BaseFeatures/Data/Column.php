@@ -541,6 +541,7 @@ class Column implements Arrayable
                     $action_types->toArray(),
                     $this->type(),
                     $this->getFilterValue(),
+                    $this->getFilterRequired(),
                 ),
         ];
     }
@@ -555,6 +556,17 @@ class Column implements Arrayable
         return $this->filterValue ?? collect();
     }
 
+    public function setFilterRequired(bool $value): self
+    {
+        $this->config['filter_required'] = $value;
+        return $this;
+    }
+
+    public function getFilterRequired() : bool
+    {
+        return $this->config['filter_required'] ?? false;
+    }
+
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -567,6 +579,7 @@ class Column implements Arrayable
                 $this->filterInstances(),
                 $this->type(),
                 $this->getFilterValue(),
+                $this->getFilterRequired(),
             );
     }
 

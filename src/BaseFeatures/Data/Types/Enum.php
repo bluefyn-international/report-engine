@@ -12,6 +12,7 @@ class Enum extends BaseType
     protected $prepend_all = true;
     protected $default_value;
     protected $use_keys = false;
+    protected bool $filterRequired = false;
     protected string $filterView = 'report-engine::partials.enum-filter';
 
     protected string $inputType = 'select';
@@ -118,7 +119,7 @@ class Enum extends BaseType
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function renderFilter(string $label, string $name, array $action_types, BaseType $columnType, Collection $value)
+    public function renderFilter(string $label, string $name, array $action_types, BaseType $columnType, Collection $value, bool $filterRequired)
     {
         return view($this->filterView)->with([
             'label' => $label,
@@ -126,6 +127,7 @@ class Enum extends BaseType
             'options' => $this->options,
             'value' => $value,
             'useKey' => $this->use_keys,
+            'filter_required' => $filterRequired,
         ]);
     }
 

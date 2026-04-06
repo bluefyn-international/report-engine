@@ -190,15 +190,21 @@ abstract class BaseType
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function renderFilter(string $label, string $name, array $action_types, self $columnType, Collection $value)
+    public function renderFilter(string $label, string $name, array $action_types, self $columnType, Collection $value, bool $filterRequired)
     {
         return view($this->filterView)
             ->with(
-                $this->getConfig($label, $name, $action_types, $columnType, $value)
+                $this->getConfig($label, $name, $action_types, $columnType, $value, $filterRequired)
             );
     }
 
-    public function getConfig(string $label, string $name, array $action_types, self $columnType, Collection $value) : array
+    public function getConfig(
+        string $label,
+        string $name,
+        array $action_types,
+        self $columnType, Collection $value,
+        bool $filterRequired,
+    ) : array
     {
         return [
             'label' => $label,
@@ -212,6 +218,7 @@ abstract class BaseType
             'selected_operators' => $this->getSelectedOperators($value),
             'options' => $this->getOptions(),
             'use_keys' => $this->use_keys ?? false,
+            'filter_required' => $filterRequired,
         ];
     }
 
