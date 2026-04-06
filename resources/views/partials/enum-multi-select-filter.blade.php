@@ -1,6 +1,6 @@
 <div class="col-md-3 mb-3">
     <input type="hidden" id="{{ $field }}_filter_action" value="{{ \AlwaysOpen\ReportEngine\BaseFeatures\Filters\InFilter::key() }}"/>
-    <input type="hidden" id="{{ $field }}_filter_required" value="{{ $filter_required }}"/>
+    <input type="hidden" id="{{ $field }}_filter_required" value="{{ $filter_required ?? '' }}"/>
     <label class="my-1 mr-2" for="{{ $field }}_filter">{{ $label }}</label>
     <div class="input-group mb-1">
         <select multiple id="{{ $field }}_filter" class="custom-select report-filter-input">

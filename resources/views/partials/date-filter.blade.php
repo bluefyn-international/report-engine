@@ -1,6 +1,6 @@
 <div class="col-md-3 mb-3">
     <input type="hidden" id="{{ $field }}_filter_action" value="{{ $action_types[0]->key() }}"/>
-    <input type="hidden" id="{{ $field }}_filter_required" value="{{ $filter_required }}"/>
+    <input type="hidden" id="{{ $field }}_filter_required" value="{{ $filter_required ?? '' }}"/>
     <input type="hidden" id="{{ $field }}_filter_2_action" value="{{ $action_types[0]->key() }}"/>
     <label class="my-1 mr-2" for="{{ $field }}_filter">{{ $label }}</label>
     <div class="input-group mb-1">
