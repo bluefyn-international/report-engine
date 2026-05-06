@@ -3,13 +3,13 @@
 namespace AlwaysOpen\ReportEngine\BaseFeatures\Data\Types;
 
 use AlwaysOpen\ReportEngine\BaseFeatures\Data\Types\Bases\BaseType;
-use AlwaysOpen\ReportEngine\BaseFeatures\Filters\EqualsFilter;
 use AlwaysOpen\ReportEngine\BaseFeatures\Filters\InFilter;
 use Illuminate\Support\Collection;
 
 class EnumMultiSelect extends Enum
 {
     protected string $filterView = 'report-engine::partials.enum-multi-select-filter';
+    protected string $inputType = 'multi-select';
 
     /**
      * Filters this data type can utilize.
@@ -42,10 +42,5 @@ class EnumMultiSelect extends Enum
             'useKey' => $this->use_keys,
             'filter_required' => $filterRequired,
         ]);
-    }
-
-    public function inputType() : string
-    {
-        return 'select';
     }
 }
